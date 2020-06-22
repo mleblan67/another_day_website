@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').load()
-}
+require('dotenv').load()
 
 const PORT = process.env.PORT || 3000
 
