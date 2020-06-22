@@ -1,5 +1,3 @@
-proccess.env.NODE_ENV = 'production'
-
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').load()
 }
@@ -11,6 +9,10 @@ const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 
 const express = require('express')
 const app = express()
+
+var http = require('http')
+var server = http.Server(app)
+
 //reading JSON
 const fs = require('fs')
 //Stripe charging API
@@ -127,4 +129,4 @@ app.post('/send_order', function(req, res) {
   send_order(dateTime,itemInfo,customerInfo)
 })
 
-app.listen(PORT)
+server.listen(PORT)
