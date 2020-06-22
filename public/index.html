@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <script>
+            //clear all localStorage
+            localStorage.removeItem('itemInfo');
+            localStorage.removeItem('itemColor')
+            localStorage.removeItem('itemId')
+        </script>
+    </head>
+    <body>
+        <nav id="nav_bar">
+            <a id="logo_link"href="index.html">
+                <img src="logos/Main_logo.png" alt="" id="top_logo">
+                <h1 id="main_title">Another Day®</h4>
+            </a>
+            <a href="index.html"><h3 class="links">home</h3></a>
+            <a href="contact.html"><h3 class="links">contact</h3></a>
+        </nav>
+
+        <div id="gallery">
+
+            <a href="product.html" onclick="localStorage.setItem('itemId', 1);localStorage.setItem('itemColor', 'light_blue');">
+                <div class="item">
+                    <img src="cloth_pics/classic_hoodie/light_blue_front.jpg" alt="" class="gallery_image">
+                    <h3 class="gallery_caption">Classic embroidered logo hoodie</h3>
+                    <p class="gallery_price">$30</p>
+                </div>
+            </a>
+
+            <a href="product.html" onclick="localStorage.setItem('itemId', 1);localStorage.setItem('itemColor', 'light_pink');">
+                <div class="item">
+                    <img src="cloth_pics/classic_hoodie/light_pink_front.jpg" alt="" class="gallery_image">
+                    <h3 class="gallery_caption">Classic embroidered logo hoodie</h3>
+                    <p class="gallery_price">$30</p>
+                </div>
+            </a>
+
+
+            <a href="product.html" onclick="localStorage.setItem('itemId', 1);localStorage.setItem('itemColor', 'white');">
+                <div class="item">
+                    <img src="cloth_pics/classic_hoodie/white_front.jpg" alt="" class="gallery_image">
+                    <h3 class="gallery_caption">Classic embroidered logo hoodie</h3>
+                    <p class="gallery_price">$30</p>
+                </div>
+            </a>
+
+            <a href="product.html" onclick="localStorage.setItem('itemId', 1);localStorage.setItem('itemColor', 'tie-dye_blue');">
+                <div class="item">
+                    <img src="cloth_pics/classic_hoodie/tie-dye_blue_front.jpg" alt="" class="gallery_image">
+                    <h3 class="gallery_caption">Classic embroidered logo hoodie</h3>
+                    <p class="gallery_price">$30</p>
+                </div>
+            </a>
+
+            <a href="product.html" onclick="localStorage.setItem('itemId', 2);localStorage.setItem('itemColor', 'tie-dye_blue');">
+                <div class="item">
+                    <img src="cloth_pics/lettered_t_shirt/tie-dye_blue_front.jpg" alt="" class="gallery_image">
+                    <h3 class="gallery_caption">Lettered Tie-dye T-shirt</h3>
+                    <p class="gallery_price">$15</p>
+                </div>
+            </a>
+
+            <a href="product.html" onclick="localStorage.setItem('itemId', 3);localStorage.setItem('itemColor', 'light_blue');">
+                <div class="item">
+                    <img src="cloth_pics/cloud_hat/light_blue_front.jpg" alt="" class="gallery_image">
+                    <h3 class="gallery_caption">Embroidered Cloud Logo Dad-Hat</h3>
+                    <p class="gallery_price">$15</p>
+                </div>
+            </a>
+
+            <a href="product.html" onclick="localStorage.setItem('itemId', 3);localStorage.setItem('itemColor', 'white');">
+                <div class="item">
+                    <img src="cloth_pics/cloud_hat/white_front.jpg" alt="" class="gallery_image">
+                    <h3 class="gallery_caption">Embroidered Cloud Logo Dad-Hat</h3>
+                    <p class="gallery_price">$15</p>
+                </div>
+            </a>
+
+            <a href="product.html" onclick="localStorage.setItem('itemId', 4);localStorage.setItem('itemColor', 'white');">
+                <div class="item">
+                    <img src="cloth_pics/flower_hat/white_front.jpg" alt="" class="gallery_image">
+                    <h3 class="gallery_caption">Embroidered Cloud Logo Dad-Hat</h3>
+                    <p class="gallery_price">$15</p>
+                </div>
+            </a>
+
+        </div>
+    </body>
+
+</html>

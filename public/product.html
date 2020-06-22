@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Another Day</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <!--inside the page script-->
+        <script src="product.js"></script>
+    </head>
+
+    <body>
+        <nav id="nav_bar">
+            <a id="logo_link"href="index.html">
+                <img src="logos/Main_logo.png" alt="" id="top_logo">
+                <h1 id="main_title">Another Day®</h4>
+            </a>
+            <a href="index.html"><h3 class="links">home</h3></a>
+            <a href="contact.html"><h3 class="links">contact</h3></a>
+        </nav>
+        
+        <div id="product_image_container">
+            <img src="" alt="" id="product_image">
+            <img src="" alt="" class="tab_image" onclick="change_product_image(this)">
+            <img src="" alt="" class="tab_image" onclick="change_product_image(this)">
+
+        </div>
+        
+        <div id="order_info">
+            <h1 id="title"></h1>
+            <h1 id="price"></h1>
+            <h2 style="display: inline; margin:0px 10px 0px 0px;">Size:</h2>
+            <p id="size_validator"></p>
+            <!--Size Selection Menu-->
+            <div id="size_selector">
+                <label class="container">
+                <input type="radio" name="size_btn" value="s">
+                <span class="checkmark">S</span>
+                </label>
+                <label class="container">
+                <input type="radio" name="size_btn" value="m">
+                <span class="checkmark">M</span>
+                </label>
+                <label class="container">
+                <input type="radio" name="size_btn" value="l">
+                <span class="checkmark">L</span>
+                </label>
+                <label class="container">
+                <input type="radio" name="size_btn" value="xl">
+                <span class="checkmark">XL</span>
+                </label>
+            </div>
+            <!--Color Selection Menu-->
+            <div id="color_selector_menu" onchange="select_color(this)">
+                <select id="color_select">
+                </select>
+            </div>
+            <!--Order Button-->
+            <button id="order_button">ORDER</button>
+            <!---Description--->
+            <p id="description"></p>      
+        </div>
+        
+    </body>
+</html>

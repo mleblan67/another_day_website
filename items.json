@@ -1,0 +1,45 @@
+{
+  "clothing": [
+    {
+      "id": 1,
+      "name": "Classic Embroidered Logo Hoodie",
+      "img":"classic_hoodie",
+      "description":"classic blue hoodie<br>embroidered logo",
+      "colors":["tie-dye_blue","light_blue","light_pink","white"],
+      "price": 3000,
+      "shipping":[600,1000,1400],
+      "sizes": true
+    },
+    {
+      "id": 2,
+      "name": "Lettered Tie-Dye T-shirt",
+      "img":"lettered_t_shirt",
+      "description":"Hand Tie Dyed t-shirt<br>100% cotton",
+      "colors":["tie-dye_blue"],
+      "price": 1500,
+      "shipping":[500,500,800],
+      "sizes":true
+    },
+    {
+      "id": 3,
+      "name": "Embroidered Cloud Logo Dad-Hat",
+      "img":"cloud_hat",
+      "description":"Classic Dad Hat<br>Embroidered logo",
+      "colors":["light_blue","white"],
+      "price": 1500,
+      "shipping":[500,500,800],
+      "sizes":false
+    },
+    {
+      "id": 4,
+      "name": "Embroidered Flower Logo Dad-Hat",
+      "img":"flower_hat",
+      "description":"Classic Dad Hat<br>Embroidered logo",
+      "colors":["white"],
+      "price": 1500,
+      "shipping":[500,500,800],
+      "sizes":false
+    }
+
+  ]
+}

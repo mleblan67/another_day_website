@@ -1,0 +1,23 @@
+{
+  "name": "current-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.7.4",
+    "express": "^4.17.1",
+    "google-spreadsheet": "^3.0.11",
+    "google-spreadsheet-append": "0.0.7",
+    "googleapis": "^52.1.0",
+    "node-fetch": "^2.6.0",
+    "stripe": "^6.36.0"
+  },
+  "devDependencies": {
+    "dotenv": "^6.2.0"
+  }
+}
