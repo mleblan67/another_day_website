@@ -1,4 +1,7 @@
-require('dotenv').load()
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').load()
+}
+
 
 const PORT = process.env.PORT || 3000
 
@@ -19,16 +22,16 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 // spreadsheet key is the long id in the sheets URL
 const doc = new GoogleSpreadsheet('1doVU69EV3zOfJdCvR5eRMUdWW_xfBCvUjr72wdMrfR0');
 
+app.set('view engine', 'ejs')
+app.use(express.json())
+app.use(express.static('public'))
+
 var accountInfo = {
   "client_email": process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
   "private_key": process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
 }
 // use service account creds
 doc.useServiceAccountAuth(accountInfo);
-
-app.set('view engine', 'ejs')
-app.use(express.json())
-app.use(express.static('public'))
 
 async function send_order(dateTime,order_info,customer_info){
   await doc.loadInfo()
