@@ -14,6 +14,7 @@ const app = express()
 //reading JSON
 const fs = require('fs')
 //Stripe charging API
+console.log(stripeSecretKey)
 const stripe = require('stripe')(stripeSecretKey)
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
