@@ -121,6 +121,10 @@ var stripeHandler = StripeCheckout.configure({
                     item_information:itemInfo,
                     customer_information:customerInfo
                 })
+            }).then(function(res) {
+                console.log(res.json())
+            }).then(function(data) {
+                console.log(data)
             })
             //clear local storage
             localStorage.removeItem('itemInfo'); // Clear the localStorage
