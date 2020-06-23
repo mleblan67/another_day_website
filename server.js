@@ -105,6 +105,7 @@ app.post('/purchase', function(req, res) {
       
       total = itemJson.price + shipping
       console.log(total)
+      console.log(req.body.stripeTokenId)
       /*
       stripe.charges.create({
         amount: total,
@@ -118,6 +119,7 @@ app.post('/purchase', function(req, res) {
         res.status(500).end()
       })
       */
+
     }
   })
 
