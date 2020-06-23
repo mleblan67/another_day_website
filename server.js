@@ -5,11 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const PORT = process.env.PORT || 3000
 
-
-async function set_up_stripe(){
-
-}
-
+console.log("env:" + process.env)
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY
 const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 
@@ -19,7 +15,6 @@ const app = express()
 //reading JSON
 const fs = require('fs')
 //Stripe charging API
-console.log("secret keyyyyy:"+stripeSecretKey)
 const stripe = require('stripe')(stripeSecretKey)
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
