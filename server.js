@@ -82,6 +82,7 @@ app.post('/purchase', function(req, res) {
       res.status(500).end()
     } else {
       console.log("able to read JSON")
+      
       const itemsJson = JSON.parse(data)
       const itemsArray = itemsJson.clothing
       let total = 0
@@ -104,6 +105,7 @@ app.post('/purchase', function(req, res) {
       
       total = itemJson.price + shipping
       console.log(total)
+      /*
       stripe.charges.create({
         amount: total,
         source: req.body.stripeTokenId,
@@ -115,6 +117,7 @@ app.post('/purchase', function(req, res) {
         console.log('Charge Fail')
         res.status(500).end()
       })
+      */
     }
   })
 
