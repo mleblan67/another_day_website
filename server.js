@@ -106,7 +106,7 @@ app.post('/purchase', function(req, res) {
       total = itemJson.price + shipping
       console.log(total)
       console.log(req.body.stripeTokenId)
-      /*
+      
       stripe.charges.create({
         amount: total,
         source: req.body.stripeTokenId,
@@ -114,11 +114,12 @@ app.post('/purchase', function(req, res) {
       }).then(function() {
         console.log('Charge Successful')
         res.json({ message: 'Successfully purchased items' })
-      }).catch(function() {
+      }).catch(function(error) {
         console.log('Charge Fail')
+        console.log(error)
         res.status(500).end()
       })
-      */
+      
 
     }
   })

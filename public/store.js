@@ -110,6 +110,7 @@ var stripeHandler = StripeCheckout.configure({
         }).then(function(res) {
             console.log(res.json())
         }).then(function(data) {
+            console.log("went through")
 
 
             //send order info to server for Google spreadsheet
@@ -131,7 +132,7 @@ var stripeHandler = StripeCheckout.configure({
             })
             */
 
-            
+
             //clear local storage
             localStorage.removeItem('itemInfo'); // Clear the localStorage
             localStorage.removeItem('itemColor')
