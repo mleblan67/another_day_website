@@ -117,6 +117,7 @@ app.post('/purchase', function(req, res) {
   })
 })
 
+/*
 app.post('/send_order', function(req, res) {
   const dateTime = new Date()
   const itemInfo = req.body.item_information
@@ -129,5 +130,6 @@ app.post('/send_order', function(req, res) {
   console.log(itemInfo)
   send_order(dateTime,itemInfo,customerInfo)
 })
+*/
 
 app.listen(PORT)
