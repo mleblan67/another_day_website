@@ -14,6 +14,14 @@ const fs = require('fs')
 //Stripe charging API
 const stripe = require('stripe')(stripeSecretKey)
 const { GoogleSpreadsheet } = require('google-spreadsheet');
+// set up google spreadsheet credentials
+const doc = new GoogleSpreadsheet('1doVU69EV3zOfJdCvR5eRMUdWW_xfBCvUjr72wdMrfR0');
+var accountInfo = {
+  "client_email": process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+  "private_key": process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
+}
+// use service account creds
+doc.useServiceAccountAuth(accountInfo);
 
 app.set('view engine', 'ejs')
 app.use(express.json())
@@ -21,17 +29,6 @@ app.use(express.static('public'))
 
 
 async function send_order(dateTime,order_info,customer_info){
-  // spreadsheet key is the long id in the sheets URL
-  const doc = new GoogleSpreadsheet('1doVU69EV3zOfJdCvR5eRMUdWW_xfBCvUjr72wdMrfR0');
-  var accountInfo = {
-    "client_email": process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    "private_key": process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
-  }
-  // use service account creds
-  doc.useServiceAccountAuth(accountInfo);
-  
-
-
   await doc.loadInfo()
   const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id]
   sheet.addRow({
@@ -118,13 +115,12 @@ app.post('/purchase', function(req, res) {
         res.status(500).end()
       })
       
-
     }
   })
 
 })
 
-/*
+
 app.post('/send_order', function(req, res) {
   const dateTime = new Date()
   const itemInfo = req.body.item_information
@@ -137,6 +133,6 @@ app.post('/send_order', function(req, res) {
   console.log(itemInfo)
   send_order(dateTime,itemInfo,customerInfo)
 })
-*/
+
 
 app.listen(PORT)
