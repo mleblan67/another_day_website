@@ -76,6 +76,9 @@ app.get('/confirm', function(req, res) {
 })
 
 app.post('/purchase', function(req, res) {
+  console.log("test")
+
+  /*
   fs.readFile('items.json', function(error, data) {
     if (error) {
       res.status(500).end()
@@ -115,6 +118,7 @@ app.post('/purchase', function(req, res) {
       })
     }
   })
+  */
 })
 
 /*
