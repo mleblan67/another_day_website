@@ -140,8 +140,6 @@ var stripeHandler = StripeCheckout.configure({
             console.log(data.message)
             //go to success screen
             window.location.href = 'success.html'
-        }).catch(function(error) {
-            console.error(error)
         })
     }
 })

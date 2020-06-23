@@ -3,8 +3,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const PORT = process.env.PORT || 3000
 
-console.log("env:" + process.env.STRIPE_SECRET_KEY + process.env.STRIPE_PUBLIC_KEY)
-
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY
 const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 
