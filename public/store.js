@@ -137,9 +137,10 @@ var stripeHandler = StripeCheckout.configure({
             localStorage.removeItem('itemInfo'); // Clear the localStorage
             localStorage.removeItem('itemColor')
             localStorage.removeItem('itemId')
-            console.log(data.message)
             //go to success screen
             window.location.href = 'success.html'
+        }).catch(function(error) {
+            console.error(error)
         })
     }
 })
