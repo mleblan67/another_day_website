@@ -88,13 +88,14 @@ function ready() {
     })
 }
 
-console.log("Keyyyy = "+ stripePublicKey)
+console.log("Key = "+ stripePublicKey)
 
 var stripeHandler = StripeCheckout.configure({
     key: stripePublicKey,
     locale: 'en',
     token: function(token) {
         item = itemInfo.id
+
         fetch('/purchase', {
             method: 'POST',
             headers: {
@@ -107,7 +108,7 @@ var stripeHandler = StripeCheckout.configure({
                 zip:zip_code
             })
         }).then(function(res) {
-            return res.json()
+            console.log("response: "+res.json())
         }).then(function(data) {
             //send order info to server for Google spreadsheet
             fetch('/send_order',{
