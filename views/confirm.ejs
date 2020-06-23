@@ -7,8 +7,9 @@
         <!--Stripe scripts-->
         <script>
             var stripePublicKey = '<%= stripePublicKey %>'
+            console.log("set Public key")
         </script>
-        
+
         <script src="https://checkout.stripe.com/checkout.js" defer></script>
         <!--process payment-->
         <script src="store.js" defer></script>
