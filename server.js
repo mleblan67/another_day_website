@@ -76,13 +76,12 @@ app.get('/confirm', function(req, res) {
 })
 
 app.post('/purchase', function(req, res) {
-  console.log("test")
-
-  /*
   fs.readFile('items.json', function(error, data) {
     if (error) {
+      console.log("error reading JSON")
       res.status(500).end()
     } else {
+      console.log("able to read JSON")
       const itemsJson = JSON.parse(data)
       const itemsArray = itemsJson.clothing
       let total = 0
@@ -118,7 +117,7 @@ app.post('/purchase', function(req, res) {
       })
     }
   })
-  */
+
 })
 
 /*
