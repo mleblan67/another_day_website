@@ -40,7 +40,7 @@ async function load_data(itemId,itemColor){
             //pictures
             document.getElementById("product_image").src = 'cloth_pics/'+itemJson.img+'/'+itemColor+'_front.jpg'
             document.getElementsByClassName("tab_image")[0].src = 'cloth_pics/'+itemJson.img+'/'+itemColor+'_front.jpg'
-            document.getElementsByClassName("tab_image")[1].src = 'cloth_pics/'+itemJson.img+'/'+itemColor+'_back.jpg'
+            document.getElementsByClassName("tab_image")[1].src = 'cloth_pics/'+itemJson.img+'/'+itemColor+'_back.JPG'
             //sizes
             if(!itemJson.sizes){
                 document.getElementById('size_selector').innerHTML = '<h2>One size only</h2>'
