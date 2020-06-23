@@ -108,7 +108,7 @@ var stripeHandler = StripeCheckout.configure({
                 zip:zip_code
             })
         }).then(function(res) {
-            console.log("response: "+res.json())
+            console.log(res.json())
         }).then(function(data) {
             //send order info to server for Google spreadsheet
             fetch('/send_order',{
