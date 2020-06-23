@@ -15,7 +15,6 @@ const app = express()
 const fs = require('fs')
 //Stripe charging API
 const stripe = require('stripe')(stripeSecretKey)
-stripe.setPublishableKey(process.env.STRIPE_PUBLIC_KEY)
 
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
@@ -66,6 +65,9 @@ app.get('/get_info', function(req,res) {
 })
 
 app.get('/confirm', function(req, res) {
+
+  stripe.setPublishableKey(stripePublicKey)
+
   fs.readFile('items.json', function(error, data) {
     if (error) {
       res.status(500).end()
