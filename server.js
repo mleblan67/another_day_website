@@ -1,11 +1,9 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').load()
-}
-
+require('dotenv').config()
 
 const PORT = process.env.PORT || 3000
 
-console.log("env:" + process.env)
+console.log("env:" + process.env.STRIPE_SECRET_KEY + process.env.STRIPE_PUBLIC_KEY)
+
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY
 const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 
@@ -106,8 +104,6 @@ app.post('/purchase', function(req, res) {
       
       total = itemJson.price + shipping
       console.log(total)
-      console.log(req.body.stripeTokenId)
-      
       stripe.charges.create({
         amount: total,
         source: req.body.stripeTokenId,
