@@ -29,7 +29,7 @@ label{
 }
 #nav_bar a{
   text-decoration: none;
-  color:black;
+  color:#333332;
 
 }
 #top_logo{
@@ -244,3 +244,20 @@ label{
   width:500px;
   margin: 50px auto 10px auto;
 }
+
+/*---Contact page---*/
+#ig_link_container{
+  width: 98%;
+  margin: 20px auto;
+  text-align: center;
+  
+}
+#ig_link_container a:hover{
+  opacity: 80%;
+}
+
+#ig_icon{
+  width: 10%;
+  margin: 10px auto -10px auto;
+}
+
