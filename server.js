@@ -11,6 +11,12 @@ const app = express()
 
 //reading JSON
 const fs = require('fs')
+//MongoDB for inventory management
+var mongoClient = require('mongodb').MongoClient
+//fill out url
+var url = "mongodb+srv://{username}:{password}@another-day-cluster-lhylq.mongodb.net/another-day-cluster?retryWrites=true&w=majority"
+url = url.replace("{username}", process.env.MONGO_USERNAME)
+url = url.replace("{password}", process.env.MONGO_PASSWORD)
 //Stripe charging API
 const stripe = require('stripe')(stripeSecretKey)
 const { GoogleSpreadsheet } = require('google-spreadsheet');
@@ -27,10 +33,9 @@ app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.static('public'))
 
-
 async function send_order(dateTime,order_info,customer_info){
   await doc.loadInfo()
-  const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id]
+  const sheet = doc.sheetsByIndex[0];
   sheet.addRow({
     date: dateTime,
     name:customer_info.fname + " " + customer_info.lname,
@@ -47,15 +52,32 @@ async function send_order(dateTime,order_info,customer_info){
 
 //send item info over to product page
 app.get('/get_info', function(req,res) {
-  fs.readFile('items.json', function(error, data) {
-    if (error) {
-      res.status(500).end()
-    } else {
-      res.send(JSON.parse(data))
-    }
-    
+  //load in how much is left of each item from the Mongo DB
+  mongoClient.connect(url, function(err,db){
+    if (err) throw err
+    var dbo = db.db("another-day-cluster")
+    dbo.collection("quantities").find({}).toArray(function(err, result) {
+      if (err) throw err;
+      //load item data
+      fs.readFile('items.json', function(error, data) {
+        if (error) {
+          res.status(500).end()
+        } else {
+          //send item and quantity data to product page
+          res.send({
+            items:JSON.parse(data),
+            quantity:result
+          })
+        }
+      })
+      db.close();
+    });
   })
+
+  
+
 })
+
 
 app.get('/confirm', function(req, res) {
   fs.readFile('items.json', function(error, data) {

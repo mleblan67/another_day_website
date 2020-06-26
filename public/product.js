@@ -1,13 +1,18 @@
 //info for the item
 var item={
 }
+var itemQuantity = {}
 
 async function load_data(itemId,itemColor){
     await fetch('/get_info')
     .then(response => response.json())
     .then(function(data){
-            
-            itemInfo = data
+            console.log(data)
+            //set up webpage
+            //load parts of data
+            const itemInfo = data.items
+            itemQuantity = data.quantity
+            //find right part of items data
             const itemJson = itemInfo.clothing.find(function(i) {
                 return i.id == itemId
             })
@@ -46,8 +51,16 @@ async function load_data(itemId,itemColor){
                 document.getElementById('size_selector').innerHTML = '<h2>One size only</h2>'
                 item.size = "One size"
             }
+            console.log(itemId+'_'+itemColor)
+            //find right part of items data
+            const quantityJson = itemQuantity.find(function(i) {
+                return i.id == itemId+'_'+itemColor
+            })
+            const product_quantity = document.getElementById('product_quantity')
+            product_quantity.innerHTML = "Quantity: "+quantityJson.quantity
         })
 }
+
 function select_size(element){
     item.size = element.value;
     console.log(item.size)
@@ -56,14 +69,20 @@ function select_size(element){
 
 //change color of product
 function select_color(element){
+    var quantityJson
     if (element.value != undefined){
+        //update color
         item.color = element.value;
         console.log(item.color);
+        //update quantity
+        quantityJson = itemQuantity.find(function(i) {
+            return i.id == item.id+'_'+item.color
+        })
     }
-
     document.getElementById("product_image").src = 'cloth_pics/'+item.product_img+'/'+item.color+'_front.jpg';
     document.getElementsByClassName("tab_image")[0].src = 'cloth_pics/'+item.product_img+'/'+item.color+'_front.jpg';
     document.getElementsByClassName("tab_image")[1].src = 'cloth_pics/'+item.product_img+'/'+item.color+'_back.jpg';
+    document.getElementById('product_quantity').innerHTML = "Quantity: "+quantityJson.quantity
 }
 
 //view tab gallery image

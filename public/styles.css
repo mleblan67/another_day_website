@@ -167,7 +167,9 @@ label{
   border-color: #979da2;
   background-color: #e3e3e3;
 }
-
+#product_quantity{
+  margin:20px auto 0px auto;
+}
 
 /*------Order Button CSS------*/
 #order_button{
