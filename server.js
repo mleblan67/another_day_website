@@ -33,7 +33,30 @@ app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.static('public'))
 
+
+function update_quantities(itemId){
+  console.log(itemId)
+  //connect to Mongo database
+  mongoClient.connect(url, function(err,db) {
+    if (err) throw err
+    var dbo = db.db("another-day-cluster")
+    var query = {id:itemId}
+    //find right query
+    dbo.collection("quantities").find(query).toArray(function(err, result) {
+      if (err) throw err;
+      var new_quantity = {$set:{quantity: (result[0].quantity-1)}}
+      //update item quantity
+      dbo.collection("quantities").updateOne(query, new_quantity, function(err, res) {
+        if (err) throw err;
+        console.log("1 document updated");
+        db.close();
+      });
+    });
+  })
+}
+
 async function send_order(dateTime,order_info,customer_info){
+  //append customer info to google spreadsheet
   await doc.loadInfo()
   const sheet = doc.sheetsByIndex[0];
   sheet.addRow({
@@ -154,6 +177,7 @@ app.post('/send_order', function(req, res) {
   console.log(customerInfo)
   console.log(itemInfo)
   send_order(dateTime,itemInfo,customerInfo)
+  update_quantities(itemInfo.id+'_'+itemInfo.color)
 })
 
 
