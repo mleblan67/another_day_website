@@ -103,8 +103,6 @@ function ready() {
     });
 }
 
-console.log("Key = " + stripePublicKey);
-
 var stripeHandler = StripeCheckout.configure({
   key: stripePublicKey,
   locale: "en",

@@ -56,19 +56,28 @@ async function load_data(itemId, itemColor) {
         item.size = "One size";
       }
       console.log(itemId + "_" + itemColor);
-      //find right part of items data
+      //find right part of quantity data
       const quantityJson = itemQuantity.find(function (i) {
         return i.id == itemId + "_" + itemColor;
       });
+      console.log("quant"+quantityJson.quantity)
       const product_quantity = document.getElementById("product_quantity");
       product_quantity.innerHTML = "Quantity: " + quantityJson.quantity;
+      //If item is sold out
+      if(quantityJson.quantity <= 0){
+        let order_button = document.getElementById('order_button')
+        //make order button not clickeable
+        order_button.disabled = "disabled";
+        //change CSS
+        order_button.style.backgroundColor = "#96b7d2"
+        //TODO: add email when in stock div
+      }
     });
 }
 
 function select_size(element) {
   item.size = element.value;
   console.log(item.size);
-  console.log(itemInfo);
 }
 
 //change color of product
@@ -82,6 +91,16 @@ function select_color(element) {
     quantityJson = itemQuantity.find(function (i) {
       return i.id == item.id + "_" + item.color;
     });
+    //update order button
+    if(quantityJson.quantity <= 0){
+      let order_button = document.getElementById('order_button')
+      //make order button not clickeable
+      order_button.disabled = "disabled";
+    } else {
+      let order_button = document.getElementById('order_button')
+      //make order button not clickeable
+      order_button.disabled = false;
+    }
   }
   document.getElementById("product_image").src =
     "cloth_pics/" + item.product_img + "/" + item.color + "_front.jpg";

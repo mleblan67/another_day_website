@@ -185,6 +185,10 @@ label{
 #order_button:hover{
     background-color: #96b7d2;
 }
+#order_button:disabled,
+#order_button[disabled]{
+  background-color: #96b7d2;
+}
 
 /*---confirm page---*/
 /*--------Information section---------*/
