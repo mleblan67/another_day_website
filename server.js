@@ -9,16 +9,17 @@ const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
 const express = require("express");
 const app = express();
 
-var compression = require('compression');
+var compression = require("compression");
 //reading JSON
 const fs = require("fs");
 //MongoDB for inventory management
 var mongoClient = require("mongodb").MongoClient;
 //fill out url
-var url = "mongodb+srv://{username}:{password}@another-day-cluster-lhylq.mongodb.net/quantities?retryWrites=true&w=majority";
+var url =
+  "mongodb+srv://{username}:{password}@another-day-cluster-lhylq.mongodb.net/quantities?retryWrites=true&w=majority";
 url = url.replace("{username}", process.env.MONGO_USERNAME);
 url = url.replace("{password}", process.env.MONGO_PASSWORD);
-console.log(url)
+console.log(url);
 //Stripe charging API
 const stripe = require("stripe")(stripeSecretKey);
 const { GoogleSpreadsheet } = require("google-spreadsheet");
@@ -34,16 +35,15 @@ var accountInfo = {
 doc.useServiceAccountAuth(accountInfo);
 
 app.set("view engine", "ejs");
-app.use(compression()); //use compression 
+app.use(compression()); //use compression
 app.use(express.json());
 app.use(express.static("public"));
 
 function update_quantities(itemId) {
   console.log(itemId);
   //connect to Mongo database
-  mongoClient.connect(url, function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("another-day-cluster");
+  mongoClient.connect(url, { useUnifiedTopology: true }).then((client) => {
+    var dbo = client.db("another-day-cluster");
     var query = { id: itemId };
     //find right query
     dbo
@@ -58,7 +58,7 @@ function update_quantities(itemId) {
           .updateOne(query, new_quantity, function (err, res) {
             if (err) throw err;
             console.log("1 document updated");
-            db.close();
+            client.close();
           });
       });
   });
@@ -84,9 +84,8 @@ async function send_order(dateTime, order_info, customer_info) {
 //send item info over to product page
 app.get("/get_info", function (req, res) {
   //load in how much is left of each item from the Mongo DB
-  mongoClient.connect(url, function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("another-day-cluster");
+  mongoClient.connect(url, { useUnifiedTopology: true }).then((client) => {
+    var dbo = client.db("another-day-cluster");
     dbo
       .collection("quantities")
       .find({})
@@ -104,7 +103,7 @@ app.get("/get_info", function (req, res) {
             });
           }
         });
-        db.close();
+        client.close();
       });
   });
 });
