@@ -15,7 +15,7 @@ const fs = require("fs");
 //MongoDB for inventory management
 var mongoClient = require("mongodb").MongoClient;
 //fill out url
-var url = "mongodb+srv://{username}:{password}@another-day-cluster-lhylq.mongodb.net/another-day-cluster?retryWrites=true&w=majority";
+var url = "mongodb+srv://{username}:{password}@another-day-cluster-lhylq.mongodb.net/quantities?retryWrites=true&w=majority";
 url = url.replace("{username}", process.env.MONGO_USERNAME);
 url = url.replace("{password}", process.env.MONGO_PASSWORD);
 console.log(url)
