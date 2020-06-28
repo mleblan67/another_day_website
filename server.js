@@ -9,6 +9,7 @@ const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
 const express = require("express");
 const app = express();
 
+var compression = require('compression');
 //reading JSON
 const fs = require("fs");
 //MongoDB for inventory management
@@ -33,6 +34,7 @@ var accountInfo = {
 doc.useServiceAccountAuth(accountInfo);
 
 app.set("view engine", "ejs");
+app.use(compression()); //use compression 
 app.use(express.json());
 app.use(express.static("public"));
 
