@@ -17,6 +17,7 @@ var mongoClient = require("mongodb").MongoClient;
 var url = "mongodb+srv://{username}:{password}@another-day-cluster-lhylq.mongodb.net/another-day-cluster?retryWrites=true&w=majority";
 url = url.replace("{username}", process.env.MONGO_USERNAME);
 url = url.replace("{password}", process.env.MONGO_PASSWORD);
+console.log(url)
 //Stripe charging API
 const stripe = require("stripe")(stripeSecretKey);
 const { GoogleSpreadsheet } = require("google-spreadsheet");
