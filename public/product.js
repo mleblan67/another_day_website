@@ -64,14 +64,7 @@ async function load_data(itemId, itemColor) {
       const product_quantity = document.getElementById("product_quantity");
       product_quantity.innerHTML = "Quantity: " + quantityJson.quantity;
       //If item is sold out
-      if(quantityJson.quantity <= 0){
-        let order_button = document.getElementById('order_button')
-        //make order button not clickeable
-        order_button.disabled = "disabled";
-        //change CSS
-        order_button.style.backgroundColor = "#96b7d2"
-        //TODO: add email when in stock div
-      }
+      select_color(document.getElementById('color_selector_menu'))
     });
 }
 
