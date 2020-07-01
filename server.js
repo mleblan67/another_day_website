@@ -39,12 +39,14 @@ app.use(compression()); //use compression
 app.use(express.json());
 app.use(express.static("public"));
 
-async function send_email(email) {
+async function send_email(email,date) {
   //append customer email to email sheet to be contacted
   await doc.loadInfo();
   const sheet = doc.sheetsByIndex[1];
   sheet.addRow({
+    date:date,
     email:email
+
   })
 }
 
@@ -119,7 +121,8 @@ app.get("/get_info", function (req, res) {
 });
 
 app.post("/send_email", function(req, res) {
-  send_email(req.body.email)
+  const dateTime = new Date();
+  send_email(req.body.email,dateTime)
 })
 
 
