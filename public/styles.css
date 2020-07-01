@@ -7,124 +7,123 @@ Grey: #979da2
 */
 
 h3 {
-    font-size: 20px;
+  font-size: 20px;
 }
 p {
-    font-size: 20px;
+  font-size: 20px;
 }
-body{
-    font-family: Helvetica, sans-serif;
-    background-color: #e3e3e3;
-    color: #333332;
+body {
+  font-family: Helvetica, sans-serif;
+  background-color: #e3e3e3;
+  color: #333332;
 }
-label{
-    font-size: 25px;
-    display:inline-block;
+label {
+  font-size: 25px;
+  display: inline-block;
 }
 /*----------Nav bar CSS----------*/
-#nav_bar{
-    text-align: center;
-    width:250px;
-    margin: auto;
+#nav_bar {
+  text-align: center;
+  width: 250px;
+  margin: auto;
 }
-#nav_bar a{
+#nav_bar a {
   text-decoration: none;
-  color:#333332;
-
+  color: #333332;
 }
-#top_logo{
-    width:150px;
-    margin:0px 0px;
+#top_logo {
+  width: 150px;
+  margin: 0px 0px;
 }
-#main_title{
+#main_title {
   text-align: center;
   text-decoration: none;
-  color:#333332;
-  font-size:25px;
+  color: #333332;
+  font-size: 25px;
   margin: 0px 0px 20px 0px;
 }
 
-.links{
-    display: inline-block;
-    margin:-5px 20px;
+.links {
+  display: inline-block;
+  margin: -5px 20px;
 }
 /*---Home---*/
 /*----------Gallery CSS----------*/
-#gallery{
-    text-align: center;
-    width: 98%;
-    margin: 20px auto;
+#gallery {
+  text-align: center;
+  width: 98%;
+  margin: 20px auto;
 }
-.item{
-    vertical-align: top;
-    display: inline-block;
-    text-align: center;
-    margin: 10px 10px;
-    width:300px;
+.item {
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  margin: 10px 10px;
+  width: 300px;
 }
-.item:hover{
-    text-decoration: underline;
+.item:hover {
+  text-decoration: underline;
 }
-.gallery_image{
-    width: 250px;
-    height: 375px;
+.gallery_image {
+  width: 250px;
+  height: 375px;
 }
-.gallery_caption{
-    margin: 5px 5px;
+.gallery_caption {
+  margin: 5px 5px;
 }
-.gallery_price{
-    margin: 10px 10px;
+.gallery_price {
+  margin: 10px 10px;
 }
 
 /*---Product Page---*/
 /*----------Product Image CSS----------*/
-#product_image_container{
-    width:350px;
-    margin:20px 40px 20px 11%;
-    display: inline-block;
+#product_image_container {
+  width: 350px;
+  margin: 20px 40px 20px 11%;
+  display: inline-block;
 }
-#product_image{
-  width:350px;
-  height:500px;
+#product_image {
+  width: 350px;
+  height: 500px;
 }
-.tab_image{
-  width:90px;
+.tab_image {
+  width: 90px;
   height: 130px;
   border: 2px solid #333332;
   border-radius: 5px;
 }
-.tab_image:hover{
+.tab_image:hover {
   cursor: pointer;
-  opacity: .7;
+  opacity: 0.7;
 }
 
-#order_info{
-    width:auto;
-    margin:20px 0px 20px 11%;
-    display: inline-block;
-    vertical-align: top;
+#order_info {
+  width: auto;
+  margin: 20px 0px 20px 11%;
+  display: inline-block;
+  vertical-align: top;
 }
-#size_validator{
+#size_validator {
   color: red;
-  display:inline-block;
-  margin:0px 0px;
+  display: inline-block;
+  margin: 0px 0px;
 }
 /*------Size Buttons CSS------*/
-#size_selector{
-  margin:0px 0px 30px 0px;
+#size_selector {
+  margin: 0px 0px 30px 0px;
 }
 .container {
   display: inline-block;
   position: relative;
   cursor: pointer;
-  width:0px;
+  width: 0px;
   height: 0px;
   font-size: 22px;
   text-align: center;
   color: #e3e3e3;
   background-color: #3c8ccc;
   border-radius: 4px;
-  margin:10px 55px 40px 0px;
+  margin: 10px 55px 40px 0px;
 }
 /* Hide the browser's default radio button */
 .container input {
@@ -141,7 +140,6 @@ label{
   line-height: 50px;
   background-color: #96b7d2;
   border-radius: 4px;
-  
 }
 /* On mouse-over, add a blue background color */
 .container:hover input ~ .checkmark {
@@ -157,113 +155,112 @@ label{
   line-height: 42px;
 }
 /*----Color Selector CSS-----*/
-#color_selector_menu{
+#color_select {
   position: relative;
-}
-#color_select{
   height: 30px;
   width: 100px;
   border-radius: 4px;
   border-color: #979da2;
   background-color: #e3e3e3;
 }
-#product_quantity{
-  margin:20px auto 0px auto;
+#product_quantity {
+  margin: 20px auto 0px auto;
+}
+
+.send_button {
+  font-size: 24px;
+  border-style: none;
+  border-radius: 5px;
+  background-color: #3c8ccc;
+  color: #e3e3e3;
+  cursor: pointer; /* Pointer/hand icon */
+  margin: auto auto;
+  padding: 10px 30px;
+}
+.send_button:hover{
+  background-color: #96b7d2;
 }
 
 /*------Order Button CSS------*/
 #order_button{
-    font-size: 24px;
-    border-style: none;
-    border-radius: 5px;
-    background-color: #3c8ccc;
-    color: #e3e3e3;
-    cursor: pointer; /* Pointer/hand icon */
-    margin:40px 0px 15px 0px;
-    padding:10px 30px;
-}
-#order_button:hover{
-    background-color: #96b7d2;
+  margin-top:35px;
 }
 #order_button:disabled,
-#order_button[disabled]{
+#order_button[disabled] {
   background-color: #96b7d2;
 }
 
 /*---confirm page---*/
 /*--------Information section---------*/
-#order_summary_container{
-  width:475px;
-  margin:0px auto 30px auto;
+#order_summary_container {
+  width: 475px;
+  margin: 0px auto 30px auto;
 }
-#summary_table{
+#summary_table {
   font-size: 25px;
 }
-#summary_table td{
-  padding:5px 20px;
+#summary_table td {
+  padding: 5px 20px;
 }
 
-#information-container{
-    width:475px;
-    margin: 10px auto;
+#information-container {
+  width: 475px;
+  margin: 10px auto;
 }
-.info-input{
-    width:100%;
-    margin:5px auto;
-    padding: 10px 10px;
-    box-sizing: border-box;
-    border: 3px solid #3c8ccc;
-    border-radius: 4px;
+.info-input {
+  width: 100%;
+  margin: 5px auto;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  border: 3px solid #3c8ccc;
+  border-radius: 4px;
 }
-.info-input-address{
-    width: 140px;
-    padding: 10px 10px;
-    margin:5px 3px;
-    display: inline-block;
-    box-sizing: border-box;
-    border: 3px solid #3c8ccc;
-    border-radius: 4px;
+.info-input-address {
+  width: 140px;
+  padding: 10px 10px;
+  margin: 5px 3px;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 3px solid #3c8ccc;
+  border-radius: 4px;
 }
 /*---------Confirm button---------*/
-.confirmation{
-    text-align: center;
+.confirmation {
+  text-align: center;
 }
 
-#confirm_button{
-    font-size: 24px;
-    border-style: none;
-    border-radius: 5px;
-    background-color: #3c8ccc;
-    color: #e3e3e3;
-    cursor: pointer; /* Pointer/hand icon */
-    margin:20px auto;
-    padding:10px 30px;
+#confirm_button {
+  font-size: 24px;
+  border-style: none;
+  border-radius: 5px;
+  background-color: #3c8ccc;
+  color: #e3e3e3;
+  cursor: pointer; /* Pointer/hand icon */
+  margin: 20px auto;
+  padding: 10px 30px;
 }
-#confirm_button:hover{
-    background-color: #96b7d2;
+#confirm_button:hover {
+  background-color: #96b7d2;
 }
-
 
 /*---Success screen---*/
 /*-----------Success message------------*/
-#success_container{
-  width:500px;
+#success_container {
+  width: 500px;
   margin: 50px auto 10px auto;
 }
 
 /*---Contact page---*/
-#ig_link_container{
+#ig_link_container {
   width: 98%;
   margin: 20px auto;
   text-align: center;
-  
 }
-#ig_link_container a:hover{
+#ig_link_container a:hover {
   opacity: 80%;
 }
 
-#ig_icon{
+#ig_icon {
   width: 10%;
   margin: 10px auto -10px auto;
 }
-

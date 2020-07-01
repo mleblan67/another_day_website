@@ -49,14 +49,21 @@
                 </label>
             </div>
             <!--Color Selection Menu-->
-            <div id="color_selector_menu" onchange="select_color(this)">
-                <select id="color_select">
-                </select>
-            </div>
+            <select id="color_select" onchange="select_color(this)">
+            </select>
+
             <!--Quantity-->
             <h2 id="product_quantity"></h2>
             <!--Order Button-->
-            <button id="order_button">ORDER</button>
+            <button class="send_button" id="order_button">ORDER</button>
+
+            <div id="out" style="display: none;">
+                <h2 style="color: red;"><u>Item out of stock</u></h2>
+                <label for="out">Enter email to be alerted <br>when this item is back in stock</label><br>
+                <input type="text" name="out" id="out_email" class="info-input" style="width: 200px;"><br>
+                <button class="send_button" id="out_button" style="margin-top: 0px;">Email when in stock</button>
+            </div>
+            
             <!---Description--->
             <p id="description"></p>      
         </div>

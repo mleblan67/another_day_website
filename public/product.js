@@ -60,11 +60,12 @@ async function load_data(itemId, itemColor) {
       const quantityJson = itemQuantity.find(function (i) {
         return i.id == itemId + "_" + itemColor;
       });
-      console.log("quant"+quantityJson.quantity)
+      item.quantity = quantityJson.quantity
+      console.log("quant"+item.quantity)
       const product_quantity = document.getElementById("product_quantity");
-      product_quantity.innerHTML = "Quantity: " + quantityJson.quantity;
+      product_quantity.innerHTML = "Quantity: " + item.quantity;
       //If item is sold out
-      select_color(document.getElementById('color_selector_menu'))
+      select_color(document.getElementById('color_select'))
     });
 }
 
@@ -75,24 +76,28 @@ function select_size(element) {
 
 //change color of product
 function select_color(element) {
-  var quantityJson;
   if (element.value != undefined) {
     //update color
     item.color = element.value;
     console.log(item.color);
     //update quantity
-    quantityJson = itemQuantity.find(function (i) {
+    const quantityJson = itemQuantity.find(function (i) {
       return i.id == item.id + "_" + item.color;
     });
+    item.quantity = quantityJson.quantity
     //update order button
-    if(quantityJson.quantity <= 0){
+    if(item.quantity <= 0){
       let order_button = document.getElementById('order_button')
       //make order button not clickeable
       order_button.disabled = "disabled";
+      //show out of stock div
+      document.getElementById('out').style.display = "block"
     } else {
       let order_button = document.getElementById('order_button')
-      //make order button not clickeable
+      //make order button clickeable
       order_button.disabled = false;
+      //hide out of stock div
+      document.getElementById('out').style.display = "none"
     }
   }
   document.getElementById("product_image").src =
@@ -102,7 +107,7 @@ function select_color(element) {
   document.getElementsByClassName("tab_image")[1].src =
     "cloth_pics/" + item.product_img + "/" + item.color + "_back.jpg";
   document.getElementById("product_quantity").innerHTML =
-    "Quantity: " + quantityJson.quantity;
+    "Quantity: " + item.quantity;
 }
 
 //view tab gallery image
@@ -114,8 +119,32 @@ function change_product_image(img) {
 window.onload = function () {
   //load all data from items.json into webpage
   load_data(localStorage["itemId"], localStorage["itemColor"]);
-  // localStorage.removeItem('itemInfo'); // Clear the localStorage
-  // localStorage.removeItem('itemColor')
+
+  //If item is out of stock
+  document.getElementById('out_button').onclick = function () {
+    //get email
+    let email_input = document.getElementById('out_email')
+    if(email_input.value){
+      email_input.style.border = "3px solid #3c8ccc"
+      //send email to googlesheet
+      fetch("/send_email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email:email_input.value
+        })
+      })
+      //clear text input
+      email_input.value = ""
+
+    } else{
+      email_input.style.border = "3px solid red"
+    }
+
+  }
 
   //assign an onclick function to every size button
   var btns = document.getElementsByName("size_btn");
@@ -124,11 +153,7 @@ window.onload = function () {
       select_size(this);
     };
   }
-  //assign an onchange function to color selector
-  document.getElementById("color_select").onchange = function () {
-    select_color(this);
-  };
-  //assign an onclick function to order button to store cookies for order form
+  //assign an onclick function to order button to store item info in Local storage
   document.getElementById("order_button").onclick = function () {
     if (item.size == null) {
       document.getElementById("size_validator").innerText =

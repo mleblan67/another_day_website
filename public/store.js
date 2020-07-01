@@ -135,7 +135,7 @@ var stripeHandler = StripeCheckout.configure({
           body: JSON.stringify({
             item_information: itemInfo,
             customer_information: customerInfo,
-          }),
+          })
         })
           .then(function (res) {
             console.log(res.json());

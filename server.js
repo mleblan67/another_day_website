@@ -39,6 +39,15 @@ app.use(compression()); //use compression
 app.use(express.json());
 app.use(express.static("public"));
 
+async function send_email(email) {
+  //append customer email to email sheet to be contacted
+  await doc.loadInfo();
+  const sheet = doc.sheetsByIndex[1];
+  sheet.addRow({
+    email:email
+  })
+}
+
 function update_quantities(itemId) {
   console.log(itemId);
   //connect to Mongo database
@@ -81,6 +90,7 @@ async function send_order(dateTime, order_info, customer_info) {
     zip: customer_info.zip,
   });
 }
+
 //send item info over to product page
 app.get("/get_info", function (req, res) {
   //load in how much is left of each item from the Mongo DB
@@ -107,6 +117,12 @@ app.get("/get_info", function (req, res) {
       });
   });
 });
+
+app.post("/send_email", function(req, res) {
+  send_email(req.body.email)
+})
+
+
 app.get("/confirm", function (req, res) {
   fs.readFile("items.json", function (error, data) {
     if (error) {
