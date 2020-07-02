@@ -62,8 +62,8 @@ async function load_data(itemId, itemColor) {
       });
       item.quantity = quantityJson.quantity
       console.log("quant"+item.quantity)
-      const product_quantity = document.getElementById("product_quantity");
-      product_quantity.innerHTML = "Quantity: " + item.quantity;
+      const product_inventory = document.getElementById("product_inventory");
+      product_inventory.innerHTML = "Quantity: " + item.quantity;
       //If item is sold out
       select_color(document.getElementById('color_select'))
     });
@@ -106,8 +106,8 @@ function select_color(element) {
     "cloth_pics/" + item.product_img + "/" + item.color + "_front.jpg";
   document.getElementsByClassName("tab_image")[1].src =
     "cloth_pics/" + item.product_img + "/" + item.color + "_back.jpg";
-  document.getElementById("product_quantity").innerHTML =
-    "Quantity: " + item.quantity;
+  document.getElementById("product_inventory").innerHTML =
+    "Remaining: " + item.quantity;
 }
 
 //view tab gallery image
