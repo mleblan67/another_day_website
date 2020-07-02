@@ -86,7 +86,6 @@ function ready() {
         }
       }
       if (filled_counter > 0) {
-        console.log("not complete");
       } else {
         //put together all customer contact info into JSON format
         info_inputs = document.getElementsByClassName("info-input");
@@ -94,8 +93,6 @@ function ready() {
           customerInfo[info_inputs[i].name] = info_inputs[i].value;
         }
         customerInfo = $("#information-container").serializeArray();
-        console.log(customerInfo);
-        console.log(itemInfo);
         //go to stripe checkout
         let total = parseInt(itemInfo.price) + shipping * 100;
         stripeHandler.open({ amount: total });
@@ -135,7 +132,7 @@ var stripeHandler = StripeCheckout.configure({
           body: JSON.stringify({
             item_information: itemInfo,
             customer_information: customerInfo,
-          })
+          }),
         })
           .then(function (res) {
             console.log(res.json());

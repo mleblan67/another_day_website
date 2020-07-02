@@ -1,12 +1,12 @@
-var stripeSecretKey
-var stripePublicKey
+var stripeSecretKey;
+var stripePublicKey;
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").load();
   //set development keys
   stripeSecretKey = process.env.DEV_STRIPE_SECRET_KEY;
   stripePublicKey = process.env.DEV_STRIPE_PUBLIC_KEY;
-} else{
+} else {
   //set production keys
   stripeSecretKey = process.env.PROD_STRIPE_SECRET_KEY;
   stripePublicKey = process.env.PROD_STRIPE_PUBLIC_KEY;
@@ -27,7 +27,7 @@ var url =
   "mongodb+srv://{username}:{password}@another-day-cluster-lhylq.mongodb.net/quantities?retryWrites=true&w=majority";
 url = url.replace("{username}", process.env.MONGO_USERNAME);
 url = url.replace("{password}", process.env.MONGO_PASSWORD);
-console.log(url);
+
 //Stripe charging API
 const stripe = require("stripe")(stripeSecretKey);
 const { GoogleSpreadsheet } = require("google-spreadsheet");
@@ -47,19 +47,17 @@ app.use(compression()); //use compression
 app.use(express.json());
 app.use(express.static("public"));
 
-async function send_email(email,date) {
+async function send_email(email, date) {
   //append customer email to email sheet to be contacted
   await doc.loadInfo();
   const sheet = doc.sheetsByIndex[1];
   sheet.addRow({
-    date:date,
-    email:email
-
-  })
+    date: date,
+    email: email,
+  });
 }
 
 function update_quantities(itemId) {
-  console.log(itemId);
   //connect to Mongo database
   mongoClient.connect(url, { useUnifiedTopology: true }).then((client) => {
     var dbo = client.db("another-day-cluster");
@@ -76,7 +74,6 @@ function update_quantities(itemId) {
           .collection("quantities")
           .updateOne(query, new_quantity, function (err, res) {
             if (err) throw err;
-            console.log("1 document updated");
             client.close();
           });
       });
@@ -128,11 +125,10 @@ app.get("/get_info", function (req, res) {
   });
 });
 
-app.post("/send_email", function(req, res) {
+app.post("/send_email", function (req, res) {
   const dateTime = new Date();
-  send_email(req.body.email,dateTime)
-})
-
+  send_email(req.body.email, dateTime);
+});
 
 app.get("/confirm", function (req, res) {
   fs.readFile("items.json", function (error, data) {
@@ -150,16 +146,12 @@ app.get("/confirm", function (req, res) {
 app.post("/purchase", function (req, res) {
   fs.readFile("items.json", function (error, data) {
     if (error) {
-      console.log("error reading JSON");
       res.status(500).end();
     } else {
-      console.log("able to read JSON");
-
       const itemsJson = JSON.parse(data);
       const itemsArray = itemsJson.clothing;
       let total = 0;
       itemId = req.body.items;
-      console.log(itemId);
       const itemJson = itemsArray.find(function (i) {
         return i.id == itemId;
       });
@@ -174,11 +166,7 @@ app.post("/purchase", function (req, res) {
       } else if (zip_code > 80000 && zip_code < 100000) {
         shipping = itemJson.shipping[2];
       }
-
       total = itemJson.price + shipping;
-      console.log(total);
-      console.log(req.body.stripeTokenId);
-
       stripe.charges
         .create({
           amount: total,
@@ -186,7 +174,6 @@ app.post("/purchase", function (req, res) {
           currency: "usd",
         })
         .then(function () {
-          console.log("Charge Successful");
           res.json({ message: "Successfully purchased items" });
         })
         .catch(function (error) {
@@ -206,8 +193,6 @@ app.post("/send_order", function (req, res) {
   for (var i = 0; i < customerInfo.length; i++) {
     customerInfo[customerInfo[i]["name"]] = customerInfo[i]["value"];
   }
-  console.log(customerInfo);
-  console.log(itemInfo);
   send_order(dateTime, itemInfo, customerInfo);
   update_quantities(itemInfo.id + "_" + itemInfo.color);
 });

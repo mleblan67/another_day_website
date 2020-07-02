@@ -6,7 +6,6 @@ async function load_data(itemId, itemColor) {
   await fetch("/get_info")
     .then((response) => response.json())
     .then(function (data) {
-      console.log(data);
       //set up webpage
       //load parts of data
       const itemInfo = data.items;
@@ -32,9 +31,7 @@ async function load_data(itemId, itemColor) {
       document.getElementById("price").innerHTML =
         "$" + itemJson.price / 100 + ".00 USD";
       document.getElementById("description").innerHTML = itemJson.description;
-      console.log(itemJson.colors.length);
       for (let i = 0; i < itemJson.colors.length; i++) {
-        console.log("adding option");
         var color_selector = document.getElementById("color_select");
         var option = document.createElement("option");
         option.text = itemJson.colors[i].replace("_", " ");
@@ -55,23 +52,20 @@ async function load_data(itemId, itemColor) {
           "<h2>One size only</h2>";
         item.size = "One size";
       }
-      console.log(itemId + "_" + itemColor);
       //find right part of quantity data
       const quantityJson = itemQuantity.find(function (i) {
         return i.id == itemId + "_" + itemColor;
       });
-      item.quantity = quantityJson.quantity
-      console.log("quant"+item.quantity)
+      item.quantity = quantityJson.quantity;
       const product_inventory = document.getElementById("product_inventory");
       product_inventory.innerHTML = "Quantity: " + item.quantity;
       //If item is sold out
-      select_color(document.getElementById('color_select'))
+      select_color(document.getElementById("color_select"));
     });
 }
 
 function select_size(element) {
   item.size = element.value;
-  console.log(item.size);
 }
 
 //change color of product
@@ -79,25 +73,24 @@ function select_color(element) {
   if (element.value != undefined) {
     //update color
     item.color = element.value;
-    console.log(item.color);
     //update quantity
     const quantityJson = itemQuantity.find(function (i) {
       return i.id == item.id + "_" + item.color;
     });
-    item.quantity = quantityJson.quantity
+    item.quantity = quantityJson.quantity;
     //update order button
-    if(item.quantity <= 0){
-      let order_button = document.getElementById('order_button')
+    if (item.quantity <= 0) {
+      let order_button = document.getElementById("order_button");
       //make order button not clickeable
       order_button.disabled = "disabled";
       //show out of stock div
-      document.getElementById('out').style.display = "block"
+      document.getElementById("out").style.display = "block";
     } else {
-      let order_button = document.getElementById('order_button')
+      let order_button = document.getElementById("order_button");
       //make order button clickeable
       order_button.disabled = false;
       //hide out of stock div
-      document.getElementById('out').style.display = "none"
+      document.getElementById("out").style.display = "none";
     }
   }
   document.getElementById("product_image").src =
@@ -121,11 +114,11 @@ window.onload = function () {
   load_data(localStorage["itemId"], localStorage["itemColor"]);
 
   //If item is out of stock
-  document.getElementById('out_button').onclick = function () {
+  document.getElementById("out_button").onclick = function () {
     //get email
-    let email_input = document.getElementById('out_email')
-    if(email_input.value){
-      email_input.style.border = "3px solid #3c8ccc"
+    let email_input = document.getElementById("out_email");
+    if (email_input.value) {
+      email_input.style.border = "3px solid #3c8ccc";
       //send email to googlesheet
       fetch("/send_email", {
         method: "POST",
@@ -134,17 +127,15 @@ window.onload = function () {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          email:email_input.value
-        })
-      })
+          email: email_input.value,
+        }),
+      });
       //clear text input
-      email_input.value = ""
-
-    } else{
-      email_input.style.border = "3px solid red"
+      email_input.value = "";
+    } else {
+      email_input.style.border = "3px solid red";
     }
-
-  }
+  };
 
   //assign an onclick function to every size button
   var btns = document.getElementsByName("size_btn");

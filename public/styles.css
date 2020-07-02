@@ -177,13 +177,13 @@ label {
   margin: auto auto;
   padding: 10px 30px;
 }
-.send_button:hover{
+.send_button:hover {
   background-color: #96b7d2;
 }
 
 /*------Order Button CSS------*/
-#order_button{
-  margin-top:35px;
+#order_button {
+  margin-top: 35px;
 }
 #order_button:disabled,
 #order_button[disabled] {
