@@ -1,10 +1,18 @@
+const stripeSecretKey
+const stripePublicKey
+
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").load();
+  //set development keys
+  stripeSecretKey = process.env.DEV_STRIPE_SECRET_KEY;
+  stripePublicKey = process.env.DEV_STRIPE_PUBLIC_KEY;
+} else{
+  //set production keys
+  stripeSecretKey = process.env.PROD_STRIPE_SECRET_KEY;
+  stripePublicKey = process.env.PROD_STRIPE_PUBLIC_KEY;
 }
-const PORT = process.env.PORT || 3000;
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
+const PORT = process.env.PORT || 3000;
 
 const express = require("express");
 const app = express();
