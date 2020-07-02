@@ -1,5 +1,5 @@
-const stripeSecretKey
-const stripePublicKey
+var stripeSecretKey
+var stripePublicKey
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").load();
