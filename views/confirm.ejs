@@ -7,7 +7,6 @@
         <!--Stripe scripts-->
         <script defer>
             var stripePublicKey = '<%= stripePublicKey %>'
-            console.log(stripePublicKey)
         </script>
 
         <script src="https://checkout.stripe.com/checkout.js" defer></script>
@@ -65,6 +64,12 @@
                 <label for="zip">Zip:</label>
                 <input type="text" name="zip" id="zip" class="info-input info-input-address">
             </div>
+
+            <div style="width:500px; margin:10px auto; text-align: center;">
+                <label for="sub_email" style="font-size: 17px;">I would like to be emailed about sales and new drops</label>
+                <input type="checkbox" name="sub_email" id="sub_email" class="info-input" checked>
+            </div>
+            
 
         </form>
 

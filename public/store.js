@@ -93,6 +93,7 @@ function ready() {
           customerInfo[info_inputs[i].name] = info_inputs[i].value;
         }
         customerInfo = $("#information-container").serializeArray();
+        console.log(customerInfo)
         //go to stripe checkout
         let total = parseInt(itemInfo.price) + shipping * 100;
         stripeHandler.open({ amount: total });

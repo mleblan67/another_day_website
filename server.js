@@ -84,6 +84,12 @@ async function send_order(dateTime, order_info, customer_info) {
   //append customer info to google spreadsheet
   await doc.loadInfo();
   const sheet = doc.sheetsByIndex[0];
+  var sub_email
+  if(customer_info.sub_email){
+    sub_email = 1
+  } else{
+    sub_email = 0
+  }
   sheet.addRow({
     date: dateTime,
     name: customer_info.fname + " " + customer_info.lname,
@@ -95,6 +101,7 @@ async function send_order(dateTime, order_info, customer_info) {
     city: customer_info.city,
     state: customer_info.state,
     zip: customer_info.zip,
+    sub_email:sub_email
   });
 }
 
