@@ -173,12 +173,13 @@ app.post("/purchase", function (req, res) {
       } else if (zip_code > 80000 && zip_code < 100000) {
         shipping = itemJson.shipping[2];
       }
-      total = itemJson.price + shipping;
+      total = itemJson.price
       stripe.charges
         .create({
           amount: total,
           source: req.body.stripeTokenId,
           currency: "usd",
+          receipt_email:req.body.email
         })
         .then(function () {
           res.json({ message: "Successfully purchased items" });

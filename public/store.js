@@ -96,7 +96,7 @@ function ready() {
         console.log(customerInfo)
         //go to stripe checkout
         let total = parseInt(itemInfo.price) + shipping * 100;
-        stripeHandler.open({ amount: total });
+        stripeHandler.open({amount: total});
       }
     });
 }
@@ -106,7 +106,6 @@ var stripeHandler = StripeCheckout.configure({
   locale: "en",
   token: function (token) {
     item = itemInfo.id;
-
     fetch("/purchase", {
       method: "POST",
       headers: {
@@ -117,6 +116,7 @@ var stripeHandler = StripeCheckout.configure({
         stripeTokenId: token.id,
         items: item,
         zip: zip_code,
+        email:document.getElementById('email').value
       }),
     })
       .then(function (res) {
