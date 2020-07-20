@@ -47,12 +47,35 @@ label {
   display: inline-block;
   margin: -5px 20px;
 }
+/*---footer---*/
+footer{
+  margin: 10px 0px;
+  text-align: center;
+}
+footer p{
+  display: inline-block;
+  color:#3c8ccc;
+}
+.cards{
+  display: inline-block;
+  width:55px;
+  filter:grayscale(100%)
+}
+
+
+
+
+
+
 /*---Home---*/
 /*----------Gallery CSS----------*/
 #gallery {
   text-align: center;
   width: 98%;
   margin: 20px auto;
+}
+#gallery a{
+  color:#3c8ccc;
 }
 .item {
   vertical-align: top;
