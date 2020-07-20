@@ -27,7 +27,12 @@ function calculate_shipping() {
   //make sure it's a valid zip
   if (zip_code > 10000) {
     if (zip_code > 10000 && zip_code < 40000) {
-      shipping = itemInfo.shipping[0] / 100;
+      //if zip is Charlottesville or Albemarle
+      if(zip_code > 22900 && zip_code < 22940){
+        shipping = 0
+      } else{
+        shipping = itemInfo.shipping[0]/100;
+      }
     } else if (zip_code > 40000 && zip_code < 80000) {
       shipping = itemInfo.shipping[1] / 100;
     } else if (zip_code > 80000 && zip_code < 100000) {

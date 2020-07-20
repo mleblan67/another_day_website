@@ -104,6 +104,25 @@ async function send_order(dateTime, order_info, customer_info) {
     sub_email:sub_email
   });
 }
+function calculate_shipping(zip_code, itemJson){
+  var shipping;
+  if (zip_code > 10000 && zip_code < 40000) {
+    //if zip is Charlottesville or Albemarle
+    if(zip_code > 22900 && zip_code < 22940){
+      shipping = 0
+    } else{
+      shipping = itemJson.shipping[0];
+    }
+  } else if (zip_code > 40000 && zip_code < 80000) {
+    shipping = itemJson.shipping[1];
+  } else if (zip_code > 80000 && zip_code < 100000) {
+    shipping = itemJson.shipping[2];
+  }
+
+  return shipping;
+}
+
+
 
 //send item info over to product page
 app.get("/get_info", function (req, res) {
@@ -165,14 +184,7 @@ app.post("/purchase", function (req, res) {
       //calculate shipping
       let shipping = 0;
       let zip_code = req.body.zip;
-
-      if (zip_code > 10000 && zip_code < 40000) {
-        shipping = itemJson.shipping[0];
-      } else if (zip_code > 40000 && zip_code < 80000) {
-        shipping = itemJson.shipping[1];
-      } else if (zip_code > 80000 && zip_code < 100000) {
-        shipping = itemJson.shipping[2];
-      }
+      shipping = calculate_shipping(zip_code,itemJson)
       total = itemJson.price +shipping
       stripe.charges
         .create({
