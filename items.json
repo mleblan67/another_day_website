@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Classic Embroidered Logo Hoodie",
       "img":"classic_hoodie",
-      "description":"classic blue hoodie<br>embroidered logo",
+      "description":"classic hoodie<br>embroidered logo",
       "colors":["tie-dye_blue","light_blue","light_pink","white"],
       "price": 3000,
       "shipping":[600,1000,1400],
