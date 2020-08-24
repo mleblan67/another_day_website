@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Classic Embroidered Logo Hoodie",
       "img":"classic_hoodie",
-      "description":"classic hoodie<br>embroidered logo",
+      "description":"100% cotton hoodie<br>embroidered cloud logo",
       "colors":["tie-dye_blue","light_blue","light_pink","white"],
       "price": 3000,
       "shipping":[600,1000,1400],
@@ -39,7 +39,16 @@
       "price": 1500,
       "shipping":[500,500,800],
       "sizes":false
+    },
+    {
+      "id": 5,
+      "name": "Flower Embroidered Logo Hoodie",
+      "img":"flower_hoodie",
+      "description":"100% cotton hoodie<br>embroidered flowerlogo",
+      "colors":["garnet","white"],
+      "price": 3000,
+      "shipping":[600,1000,1400],
+      "sizes": true
     }
-
   ]
 }
