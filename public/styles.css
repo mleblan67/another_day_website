@@ -105,10 +105,14 @@ footer p{
   margin: 20px 40px 20px 11%;
   display: inline-block;
 }
-#product_image {
-  width: 350px;
-  height: 500px;
+
+@media only screen and (min-width: 480px) {
+  #product_image {
+    width: 350px;
+    height: 500px;
+  }
 }
+
 @media only screen and (max-width: 480px) {
   #product_image {
     width: 700px;
