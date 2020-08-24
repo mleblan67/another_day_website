@@ -45,7 +45,7 @@
       "name": "Flower Embroidered Logo Hoodie",
       "img":"flower_hoodie",
       "description":"100% cotton hoodie<br>embroidered flowerlogo",
-      "colors":["garnet","white"],
+      "colors":["maroon","white"],
       "price": 3000,
       "shipping":[600,1000,1400],
       "sizes": true

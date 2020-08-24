@@ -107,6 +107,7 @@ footer p{
 }
 
 @media only screen and (min-width: 480px) {
+  /*---desktop product image size---*/
   #product_image {
     width: 350px;
     height: 500px;
@@ -114,6 +115,7 @@ footer p{
 }
 
 @media only screen and (max-width: 480px) {
+  /*---phone product image size bigger---*/
   #product_image {
     width: 700px;
     height: 1000px;
