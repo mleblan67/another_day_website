@@ -114,13 +114,13 @@ window.onload = function () {
   load_data(localStorage["itemId"], localStorage["itemColor"]);
 
   //If item is out of stock
-  document.getElementById("out_button").onclick = function () {
+  document.getElementById("out_button").onclick = async function () {
     //get email
     let email_input = document.getElementById("out_email");
     if (email_input.value) {
       email_input.style.border = "3px solid #3c8ccc";
       //send email to googlesheet
-      fetch("/send_email", {
+      await fetch("/send_email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

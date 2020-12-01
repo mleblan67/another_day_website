@@ -21,11 +21,28 @@ label {
   font-size: 25px;
   display: inline-block;
 }
+/*---Sale banner CSS---*/
+#sale_banner{
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  height: 55px;
+  margin-left: -8px;
+  padding: 1px 0;
+}
+#sale_banner p{
+  color: #e3e3e3;
+  text-align: center;
+}
+
 /*----------Nav bar CSS----------*/
 #nav_bar {
   text-align: center;
   width: 250px;
   margin: auto;
+  margin-top: 70px;
+
 }
 #nav_bar a {
   text-decoration: none;
