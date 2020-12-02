@@ -6,7 +6,7 @@
       "img":"classic_hoodie",
       "description":"50% cotton/ 50% polyester hoodie<br>embroidered cloud logo",
       "colors":["tie-dye_blue","light_blue","light_pink","white"],
-      "price": 2600,
+      "price": 2400,
       "shipping":[600,1000,1400],
       "sizes": true
     },
@@ -46,7 +46,7 @@
       "img":"flower_hoodie",
       "description":"50% cotton/ 50% polyester hoodie<br>embroidered flowerlogo",
       "colors":["maroon","white"],
-      "price": 2600,
+      "price": 2400,
       "shipping":[600,1000,1400],
       "sizes": true
     }
