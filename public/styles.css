@@ -60,6 +60,34 @@ label {
   margin: 0px 0px 20px 0px;
 }
 
+/*---Sale Banner and Nav bar phone support---*/
+@media only screen and (max-width: 1000px) {
+  /*---Sale banner CSS---*/
+  #sale_banner{
+    background-color: #333;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    height: 150px;
+    margin-left: -8px;
+    padding: 1px 0;
+  }
+  #sale_banner p{
+    font-size: 40px;
+    color: #e3e3e3;
+    text-align: center;
+  }
+  /*----------Nav bar CSS----------*/
+  #nav_bar {
+    text-align: center;
+    width: 250px;
+    margin: auto;
+    margin-top: 170px;
+  }
+}
+
+
+
 .links {
   display: inline-block;
   margin: -5px 20px;

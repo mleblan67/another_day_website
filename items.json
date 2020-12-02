@@ -6,7 +6,7 @@
       "img":"classic_hoodie",
       "description":"50% cotton/ 50% polyester hoodie<br>embroidered cloud logo",
       "colors":["tie-dye_blue","light_blue","light_pink","white"],
-      "price": 3000,
+      "price": 2600,
       "shipping":[600,1000,1400],
       "sizes": true
     },
@@ -16,7 +16,7 @@
       "img":"lettered_t_shirt",
       "description":"Hand Tie Dyed t-shirt<br>100% cotton",
       "colors":["tie-dye_blue"],
-      "price": 1500,
+      "price": 1200,
       "shipping":[500,500,800],
       "sizes":true
     },
@@ -26,7 +26,7 @@
       "img":"cloud_hat",
       "description":"Classic Dad Hat<br>Embroidered logo",
       "colors":["light_blue","white"],
-      "price": 1500,
+      "price": 1200,
       "shipping":[500,500,800],
       "sizes":false
     },
@@ -36,7 +36,7 @@
       "img":"flower_hat",
       "description":"Classic Dad Hat<br>Embroidered logo",
       "colors":["white"],
-      "price": 1500,
+      "price": 1200,
       "shipping":[500,500,800],
       "sizes":false
     },
@@ -46,7 +46,7 @@
       "img":"flower_hoodie",
       "description":"50% cotton/ 50% polyester hoodie<br>embroidered flowerlogo",
       "colors":["maroon","white"],
-      "price": 3000,
+      "price": 2600,
       "shipping":[600,1000,1400],
       "sizes": true
     }
