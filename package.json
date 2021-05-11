@@ -16,12 +16,7 @@
     "googleapis": "^52.1.0",
     "mongodb": "^3.5.9",
     "node-fetch": "^2.6.0",
-    "stripe": "^6.36.0",
-    "json-bigint": ">=1.0.0",
-    "axios": ">=0.21.1",
-    "node-forge": ">=0.10.0",
-    "bl": ">=2.2.1",
-    "lodash": ">=4.17.21"
+    "stripe": "^6.36.0"
   },
   "devDependencies": {
     "dotenv": "^6.2.0",
